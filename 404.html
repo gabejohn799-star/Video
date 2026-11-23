@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2XMZNLZYX6"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+gtag('config', 'G-2EMZHLZYX6');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player</title>
+<style>
+body {
+    margin: 0;
+    background: #f8f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* HEADER ATAS */
+.site-header {
+    background: #ffffff;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e7eb;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: #111827;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.telegram-btn {
+    background: #0088cc;
+    color: #ffffff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s;
+}
+
+.telegram-btn:hover {
+    background: #0077b5;
+}
+
+/* KONTAINER UTAMA PEMUTAR VIDEO */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 16px;
+    box-sizing: border-box;
+}
+
+/* PEMUTAR VIDEO */
+.player-wrapper {
+    width: 100%;
+    max-width: 480px;
+    background: #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-height: 52vh;
+    display: block;
+    background: #000;
+}
+
+video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+}
+
+/* AREA BANNER DI BAWAH VIDEO */
+.banner-container {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TEKS CTA DI BAWAH BANNER (KE SMARTLINK) */
+.cta-top-container {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.cta-top-link {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.cta-top-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* TOMBOL DOWNLOAD DI BAWAH CTA (KE SMARTLINK) */
+.download-action-container {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.download-btn-main {
+    display: inline-block;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);
+    transition: background-color 0.2s;
+}
+
+.download-btn-main:hover {
+    background: #1d4ed8;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER ATAS -->
+<header class="site-header">
+    <a href="#" id="logoBtn" class="logo">aceimg</a>
+    <a href="https://t.me/kumpulanvideyindonesiaviral" target="_blank" rel="noopener noreferrer" class="telegram-btn">Join Telegram</a>
+</header>
+
+<!-- KONTEN UTAMA -->
+<div class="main-content">
+    <div class="player-wrapper">
+        <video
+            id="player"
+            controls
+            playsinline
+            webkit-playsinline
+            preload="metadata"
+            controlsList="nofullscreen nodownload">
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- BANNER 300x250 (DI ATAS CTA & DOWNLOAD) -->
+    <div class="banner-container">
+        <script>
+          atOptions = {
+            'key' : '2ba4f0165fd4cff84989d89dca94ae06',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script src="https://biomanos.org/22/2ba4f0165fd4cff84989d89dca94ae06"></script>
+    </div>
+
+    <!-- TEKS CTA (KE SMARTLINK) -->
+    <div class="cta-top-container">
+        <a href="#" id="ctaTopBtn" class="cta-top-link">klik untuk koleksi video lainnya</a>
+    </div>
+
+    <!-- TOMBOL DOWNLOAD (KE SMARTLINK) -->
+    <div class="download-action-container">
+        <a href="#" id="downloadBtn" class="download-btn-main">⬇ Download Video</a>
+    </div>
+</div>
+
+<script>
+/* =========================
+   KONFIGURASI IKLAN / LINK
+========================= */
+const JSON_URL = "../videos.json"; // Sesuaikan jika videos.json berada di root folder utama
+const SMART_LINK = "https://apiguinee.org/4/08c815375df57aaafadf0cfe54ba5db4"; // Adsterra Smartlink Baru
+
+const video = document.getElementById("player");
+const ctaTopBtn = document.getElementById("ctaTopBtn");
+const logoBtn = document.getElementById("logoBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+
+/* BLOKIR FULLSCREEN */
+video.requestFullscreen = function() { return Promise.reject(); };
+if (video.webkitRequestFullscreen) video.webkitRequestFullscreen = function() {};
+if (video.msRequestFullscreen) video.msRequestFullscreen = function() {};
+
+/* KUNCI WAKTU SESI */
+const timeKey = "video_time_" + window.location.href;
+
+/* FUNGSI BUKA LINK AMAN (LOLOS IN-APP BROWSER) */
+function openLink(url, e) {
+    if (e) e.preventDefault();
+    sessionStorage.setItem(timeKey, video.currentTime);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+/* EVENT KLIK (SEMUA DIARAHKAN KE SMARTLINK) */
+logoBtn.addEventListener("click", function(e) {
+    openLink(SMART_LINK, e);
+});
+
+ctaTopBtn.addEventListener("click", function(e) {
+    openLink(SMART_LINK, e);
+});
+
+downloadBtn.addEventListener("click", function(e) {
+    openLink(SMART_LINK, e);
+});
+
+/* =========================
+   AMBIL KODE DARI PARAMETER ?f=
+========================= */
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('f');
+
+/* =========================
+   LOAD VIDEOS.JSON & RESUME WAKTU
+========================= */
+fetch(JSON_URL)
+.then(res => {
+    if(!res.ok) throw new Error("Gagal mengambil videos.json");
+    return res.json();
+})
+.then(data => {
+    const vids = data.videos;
+    const selected = vids.find(v => v.id === id || (v.cdn && v.cdn.includes(id)));
+
+    if(!selected || !id){
+        document.body.innerHTML =
+        '<h1 style="color:#111;text-align:center;margin-top:40px;font-family:sans-serif;">Video tidak ditemukan</h1>';
+        return;
+    }
+
+    video.src = selected.cdn;
+
+    if(selected.poster) {
+        video.poster = selected.poster;
+    } else {
+        video.src = selected.cdn + "#t=0.5";
+    }
+
+    video.addEventListener("loadedmetadata", function() {
+        const savedTime = sessionStorage.getItem(timeKey);
+        if (savedTime && !isNaN(savedTime)) {
+            video.currentTime = parseFloat(savedTime);
+        }
+    });
+})
+.catch(error => {
+    console.error(error);
+    document.body.innerHTML =
+    '<h1 style="color:#111;text-align:center;margin-top:40px;font-family:sans-serif;">Gagal memuat video</h1>';
+});
+
+/* SIMPAN WAKTU VIDEO BERKALA */
+video.addEventListener("timeupdate", function() {
+    if (video.currentTime > 0) {
+        sessionStorage.setItem(timeKey, video.currentTime);
+    }
+});
+</script>
+
+</body>
+</html>
